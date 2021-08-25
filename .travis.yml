@@ -3,8 +3,7 @@ services:
   -docker
 
 before_install:
-  - docker build -t wandrewjam/react-test -f ./client/Dockerfile.dev
-  ./client
+  - docker build -t wandrewjam/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true wandrewjam/react-test npm test
@@ -15,8 +14,7 @@ after_success:
   - docker build -t wandrewjam/multi-server ./server
   - docker build -t wandrewjam/multi-worker ./worker
   # Login to the Docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
-  --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push wandrewjam/multi-client
   - docker push wandrewjam/multi-nginx
   - docker push wandrewjam/multi-server
