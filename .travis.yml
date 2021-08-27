@@ -19,3 +19,16 @@ after_success:
   - docker push wandrewjam/multi-nginx
   - docker push wandrewjam/multi-server
   - docker push wandrewjam/multi-worker
+
+deploy:
+  provider:  elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-208770535143
+  bucket_path: docker-multi
+  on:
+    branch: main
+  access_key_id:  $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  
