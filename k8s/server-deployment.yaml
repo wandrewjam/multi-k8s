@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: stephengrider/multi-server
+          image: cygnetops/multi-server-pgfix-5-11
           ports:
             - containerPort: 5000
           env:
@@ -22,7 +22,7 @@ spec:
               value: redis-cluster-ip-service
             - name: REDIS_PORT
               value: '6379'
-            - name: PG_USER
+            - name: PGUSER
               value: postgres
             - name: PGHOST
               value: postgres-cluster-ip-service
