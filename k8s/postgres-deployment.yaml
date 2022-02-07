@@ -1,3 +1,5 @@
+# Remember you need to set a secret using "kubectl create secret
+# generic pgpassword --from-literal PGPASSWORD=<some-password>
 apiVersion: apps/v1
 kind: Deployment
 metadata:
