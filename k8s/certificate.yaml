@@ -1,0 +1,13 @@
+apiVersion: certmanager.io/v1
+kind: Certificate
+metadata:
+  name: ajwatson-me-tls
+spec:
+  secretName: ajwatson-me
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: ajwatson.me
+  dnsNames:
+    - ajwatson.me
+    - www.ajwatson.me
